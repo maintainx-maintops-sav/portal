@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-        const apiUrl = 'YOUR_API_ENDPOINT'; // Replace with your API endpoint
-        const apiToken = 'YOUR_API_TOKEN'; // Replace with your API token
+        const apiUrl = 'https://api.getmaintainx.com/v1/workorders'; // Replace with your API endpoint
+        const apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczMjg2Niwib3JnYW5pemF0aW9uSWQiOjE0MDI0NCwiaWF0IjoxNzU3NjkyODY2LCJzdWIiOiJSRVNUX0FQSV9BVVRIIiwianRpIjoiOWI5NTJlYzYtMzg1Yy00MDcyLWJlNjYtNzE1YThlOThhNDVhIn0.vLgLdD9m4JCp3sbATWcFLnmLp04WgNsf3njFuH1BSz8'; // Replace with your API token
 
         const dataTable = document.getElementById('dataTable');
         const tableHead = dataTable.querySelector('thead tr');
