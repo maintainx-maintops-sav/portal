@@ -1,33 +1,21 @@
- <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MaintainX API Test</title>
-        <style>
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            th, td {
-                border: 1px solid black;
-                padding: 8px;
-                text-align: left;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>MaintainX API Data</h1>
-        <table id="dataTable">
-            <thead>
-                <tr>
-                    <!-- Headers will be populated by JavaScript -->
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be populated by JavaScript -->
-            </tbody>
-        </table>
-        <script src="apitest.js"></script>
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaintainX API Example</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        ul { list-style-type: none; padding: 0; }
+        li { background-color: #f4f4f4; margin-bottom: 5px; padding: 10px; border-radius: 5px; }
+        button { padding: 10px 15px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>MaintainX Assets</h1>
+    <button id="fetch-button">Fetch Assets</button>
+    <ul id="asset-list"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
