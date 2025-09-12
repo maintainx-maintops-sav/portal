@@ -1,28 +1,50 @@
-async function getMaintainXUsers(apiKey) {
-  const apiUrl = 'https://api.getmaintainx.com/v1/users';
+document.getElementById('fetch-button').addEventListener('click', fetchMaintainXAssets);
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-    });
+async function fetchMaintainXAssets() {
+    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczMjg2Niwib3JnYW5pemF0aW9uSWQiOjE0MDI0NCwiaWF0IjoxNzU3NjkyODY2LCJzdWIiOiJSRVNUX0FQSV9BVVRIIiwianRpIjoiOWI5NTJlYzYtMzg1Yy00MDcyLWJlNjYtNzE1YThlOThhNDVhIn0.vLgLdD9m4JCp3sbATWcFLnmLp04WgNsf3njFuH1BSz8';
+    const assetList = document.getElementById('asset-list');
+    assetList.innerHTML = 'Loading assets...';
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    // CORS proxy is used to make a cross-origin request from the browser
+    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+    const targetUrl = 'https://api.getmaintainx.com/v1/assets';
+    const fullUrl = proxyUrl + encodeURIComponent(targetUrl);
+
+    try {
+        const response = await fetch(fullUrl, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`API call failed with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data); // Log the full response to see its structure
+
+        displayAssets(data.assets); // Access the 'assets' array from the response
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        assetList.innerHTML = '<li>Error loading assets. Check the console for details.</li>';
     }
-
-    const data = await response.json();
-    console.log('MaintainX Users:', data);
-    return data;
-  } catch (error) {
-    console.error('Error fetching MaintainX users:', error);
-    throw error;
-  }
 }
 
-// Replace 'YOUR_MAINTAINX_API_KEY' with your actual API key
-const myApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczMjg2Niwib3JnYW5pemF0aW9uSWQiOjE0MDI0NCwiaWF0IjoxNzU3NjkyODY2LCJzdWIiOiJSRVNUX0FQSV9BVVRIIiwianRpIjoiOWI5NTJlYzYtMzg1Yy00MDcyLWJlNjYtNzE1YThlOThhNDVhIn0.vLgLdD9m4JCp3sbATWcFLnmLp04WgNsf3njFuH1BSz8'; 
-getMaintainXUsers(myApiKey);
+function displayAssets(assets) {
+    const assetList = document.getElementById('asset-list');
+    assetList.innerHTML = ''; // Clear previous content
+
+    if (!assets || assets.length === 0) {
+        assetList.innerHTML = '<li>No assets found.</li>';
+        return;
+    }
+
+    assets.forEach(asset => {
+        const li = document.createElement('li');
+        li.textContent = `Name: ${asset.name} | ID: ${asset.id} | Location: ${asset.locationName}`;
+        assetList.appendChild(li);
+    });
+}
