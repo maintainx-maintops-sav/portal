@@ -11,7 +11,7 @@ async function fetchMaintainXAssets() {
     const fullUrl = proxyUrl + encodeURIComponent(targetUrl);
 
     try {
-        const response = await fetch(fullUrl, {
+        const response = await fetch(targetUrl, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
