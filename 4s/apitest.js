@@ -1,7 +1,7 @@
 document.getElementById('fetch-button').addEventListener('click', fetchMaintainXAssets);
 
 async function fetchMaintainXAssets() {
-    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczMjg2Niwib3JnYW5pemF0aW9uSWQiOjE0MDI0NCwiaWF0IjoxNzU3NjkyODY2LCJzdWIiOiJSRVNUX0FQSV9BVVRIIiwianRpIjoiOWI5NTJlYzYtMzg1Yy00MDcyLWJlNjYtNzE1YThlOThhNDVhIn0.vLgLdD9m4JCp3sbATWcFLnmLp04WgNsf3njFuH1BSz8';
+    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczMjg2Niwib3JnYW5pemF0aW9uSWQiOjE0MDI0NCwiaWF0IjoxNzU3Njk4MTQ3LCJzdWIiOiJSRVNUX0FQSV9BVVRIIiwianRpIjoiYTUyYjBhMjMtYTM3Ni00ZDgyLWJiMzctODdhNmI2OGI5YzgzIn0.dHnzd7piXi5UnsHeJV5pJIlk4OO9cgeZaDRzg8vMtTg';
     const assetList = document.getElementById('asset-list');
     assetList.innerHTML = 'Loading assets...';
 
